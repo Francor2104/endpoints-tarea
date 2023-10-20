@@ -44,7 +44,7 @@ class RegionsController extends Controller
         $champion->save();
 
         return response()->json([
-            'message' => 'Campeón creado satisfactoriamente!',
+            'message' => 'Region creada, ahora esperemos que surjan campeones!',
             'data' => $champion
         ], 201);
     }
