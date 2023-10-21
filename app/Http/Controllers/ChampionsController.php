@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Champions;
 use Illuminate\Http\Request;
+use App\Http\Requests\ChampionRequest;
 
 class ChampionsController extends Controller
 {
@@ -12,9 +13,6 @@ class ChampionsController extends Controller
      */
     public function index()
     {
-    $champions = Champions::all();
-
-    return response()->json($champions);
     }
 
     /**
@@ -28,7 +26,7 @@ class ChampionsController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ChampionRequest $request)
     {
 
         $validatedData = $request->validate([
@@ -36,15 +34,6 @@ class ChampionsController extends Controller
             'role' => 'required|max:255',
             'difficulty' => 'required|integer|min:1|max:10',
             'release_date' => 'required|date',
-        ], [
-            'name.required' => 'El nombre es obligatorio.',
-            'role.required' => 'El rol es obligatorio.',
-            'difficulty.required' => 'La dificultad es obligatoria.',
-            'difficulty.integer' => 'La dificultad debe ser un número entero.',
-            'difficulty.min' => 'La dificultad mínima es 1.',
-            'difficulty.max' => 'La dificultad máxima es 10.',
-            'release_date.required' => 'La fecha de lanzamiento es obligatoria.',
-            'release_date.date' => 'La fecha de lanzamiento debe ser una fecha válida. El formato es: "año-dia-mes"',
         ]);
 
         $champion = new Champions($validatedData);

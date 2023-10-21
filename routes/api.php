@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\ChampionsController;
+use App\Http\Controllers\GamemodesController;
 use App\Http\Controllers\ItemsController;
 use App\Http\Controllers\RegionsController;
+use App\Http\Controllers\SummonerSpellsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +21,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/champions', [ChampionsController::class, 'store']);
 Route::get('/items', [ItemsController::class, 'index']);
 Route::post('/regions', [RegionsController::class, 'store']);
+
+
+Route::post('/gamemodes', [GamemodesController::class, 'store']);
+Route::get('/summoners', [SummonerSpellsController::class, 'index']);
 
